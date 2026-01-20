@@ -1,3 +1,11 @@
+body{
+  padding: 10px;
+  color: FFFFFF;
+  font-size: 20px;
+  border-radius: 18px;
+  border: 0.2px solid F0FF0F;
+}
+
 .intro{
   background-color: red;
   color: white;
