@@ -5,6 +5,8 @@ body{
   border-radius: 18px;
   margin: 2px 2px;
   border: 0.2px solid F0FF0F;
+  text-align: centre;
+  content-justify: centre;
 }
 
 .intro{
