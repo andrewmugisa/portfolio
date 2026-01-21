@@ -11,3 +11,7 @@ body{
   background-color: tomato;
   color: white;
 }
+
+img{
+  border-radius: 50%;
+}
