@@ -36,8 +36,10 @@ A centralized tracking repository for my engineering, automation, and software d
 
 ## 🛠️ Core Technologies
 *(Customize this section with your specific tools and frameworks)*
-* **Languages:** Python, JavaScript/TypeScript, Go, Bash
+* **Languages:** Java, Python, JavaScript, C, C++, Bash
 * **Infrastructure:** MikroTik RouterOS, VoIP/SIP, IoT Microcontrollers
+* **DB:** postgres, mongoDB
+* **Auth:** supaBase
 * **Concepts:** System Architecture, API Design, Hardware Integration, Data Parsing
 
 ---
