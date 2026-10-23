@@ -1,64 +1,44 @@
 # Portfolio Dashboard
 
-A centralized tracking repository for my personal engineering, automation, and software development projects. This portfolio spans hardware integration, networking automation, fintech, and full-stack web applications.
+A centralized tracking repository for my engineering, automation, and software development projects. This portfolio spans hardware integration, network automation, fintech, and full-stack applications.
 
 ---
 
 ## 🚀 Active & Scheduled Projects
 
-### 🛠️ In Progress / Started
-* **wigo-events** 
-  * *Status:* ⏳ In Progress
-  * *Description:* Event management platform.
-* **mikrotik automation**
-  * *Status:* ⚙️ Started
-  * *Description:* Network automation tools and scripts for MikroTik hardware.
-* **personal portfolio**
-  * *Status:* 🎨 Started
-  * *Description:* My professional landing page to showcase these projects.
-
-### 📅 Scheduled
-* **car remote starter for mazda**
-  * *Status:* 🗓️ Scheduled (Next 3 months)
-  * *Notes:* All hardware and software requirements are finalized.
+| Project Name | Current Status | Notes / Description |
+| :--- | :--- | :--- |
+| **wigo-events** | ⏳ In Progress | Full-stack event management platform. |
+| **mikrotik automation** | ⚙️ Started | Network automation tools and scripts for MikroTik RouterOS. |
+| **personal portfolio** | 🎨 Started | Professional landing page to showcase this project index. |
+| **car remote starter for mazda**| 🗓️ Scheduled | Kick-off in next 3 months; all requirements and parts in place. |
 
 ---
 
 ## ✅ Completed Projects
 
-* **to-do list**
-  * *Status:* 🎉 API Complete
-  * *Description:* Back-end RESTful API for task management.
+| Project Name | Status | Milestone Achieved |
+| :--- | :--- | :--- |
+| **to-do list** | 🎉 Completed | Back-end RESTful API is fully functional. |
 
 ---
 
 ## 📋 Project Backlog (Not Started)
 
-### 📊 Fintech & Data
-* **bank statement analyser**
-  * *Status:* 📐 Architectural Design Complete
-  * *Description:* Engine to parse, categorize, and extract insights from financial statements.
-* **bit coin trading bot**
-  * *Status:* 📈 Idea Phase
-  * *Description:* Automated cryptocurrency trading algorithm.
-
-### 🤖 Hardware & IoT
-* **autonomous car with obstacle detection**
-  * *Status:* 🏎️ Idea Phase
-  * *Description:* Robotics project utilizing sensor arrays for self-driving navigation.
-
-### 📞 Telecom & Networking
-* **traditional telephone to online call reception**
-  * *Status:* ☎️ Idea Phase
-  * *Description:* Bridge system migrating legacy telephony infrastructure to VoIP/cloud reception.
+| Project Name | Category | Readiness Level |
+| :--- | :--- | :--- |
+| **bank statement analyser** | Fintech & Data | 📐 Architectural Design Complete |
+| **traditional telephone to online call reception** | Telecom & VoIP | ☎️ Concept Phase |
+| **autonomous car with obstacle detection** | Robotics & IoT | 🏎️ Concept Phase |
+| **bit coin trading bot** | Fintech & Algorithmic | 📈 Concept Phase |
 
 ---
 
-## 🛠️ Tech Stack & Skills
-*(Tip: Customize this section with your actual tools!)*
-* **Languages:** Python, JavaScript/TypeScript, Bash
-* **Networking & Hardware:** MikroTik RouterOS, IoT Microcontrollers
-* **Architecture:** System Design, API Development, Data Parsing
+## 🛠️ Core Technologies
+*(Customize this section with your specific tools and frameworks)*
+* **Languages:** Python, JavaScript/TypeScript, Go, Bash
+* **Infrastructure:** MikroTik RouterOS, VoIP/SIP, IoT Microcontrollers
+* **Concepts:** System Architecture, API Design, Hardware Integration, Data Parsing
 
 ---
-*Generated and updated dynamically.*
+*Last Updated: October 2026*
