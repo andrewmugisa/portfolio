@@ -15,7 +15,7 @@ body {
   color: rgb(255, 255, 255);
   text-align: center;
   font-family: Arial, sans-serif;
-  margin: 1px 18px;
+  margin: 1px 1px;
   
   /* Layer 1 (Top): A dark semi-transparent overlay to tone down the background */
   /* Layer 2 (Bottom): A CSS-generated tiny white dot pattern on a dark gray base */
