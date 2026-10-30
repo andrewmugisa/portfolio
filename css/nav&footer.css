@@ -1,0 +1,78 @@
+/* =============== NAVBAR =============== */
+
+.navbar {
+  background-color: rgba(171, 171, 248, 0.154);
+  border: 1px solid rgba(255, 255, 255, 0.114);
+  border-radius: 0 0 10px 10px;
+  padding: 8px;
+}
+
+.navbar-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  gap: 20px;
+}
+
+.navbar-logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.navbar-menu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 15px;
+
+  list-style: none;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
+}
+
+.navbar-menu li {
+  flex: 1;
+  border: 1px solid rgba(255, 255, 255, 0.114);
+  border-radius: 18px;
+  text-align: center;
+}
+
+.navbar-menu li a {
+  display: block;
+  padding: 15px 20px;
+  border-radius: 18px;
+}
+
+.navbar-menu li:hover {
+  background-color: rgba(82, 81, 81, 0.478);
+  transition: background-color 0.3s ease;
+}
+
+/* =============== FOOTER =============== */
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba(171, 171, 248, 0.154);
+  border: 1px solid rgba(255, 255, 255, 0.114);
+  border-radius: 18px;
+
+  padding: 10px;
+  margin-top: auto;
+  margin-bottom: 10px;
+
+  width: 100%;
+}
+
+footer p {
+  margin: 0;
+}
