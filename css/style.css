@@ -206,6 +206,7 @@ footer p {
 /* ---------- 4. Home ---------- */
 /* =============== HERO =============== */
 .hero {
+  margin-top: 12px;
   display: grid;
   grid-template-columns: 88px 1fr minmax(220px, 30%);
   grid-template-areas: "rail content photo";
@@ -406,11 +407,16 @@ footer p {
   margin: 8px 0 28px;
   padding: 18px 24px;
   background: var(--surface);
-
-  border-radius: 0 var(--radius) var(--radius) 0;
+  border-radius: var(--radius) var(--radius);
   font-size: 1.3rem;
   font-style: italic;
-  text-align: left;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+.motto:hover {
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  transform: scale(1.05);
 }
 
 .motto p {
