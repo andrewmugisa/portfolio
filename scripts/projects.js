@@ -31,7 +31,7 @@ const projects = [
     description:
       "A Chrome extension that detects password fields and generates strong random passwords with clipboard copy. Nothing is stored, for privacy and security.",
     tech: ["JavaScript", "Chrome Extensions API"],
-    image: "images/password-generator.png",
+    image: "images/password-generator.jpg",
     alt: "password-generator project preview",
     link: "https://github.com/andrewmugisa/password-generator",
   },
