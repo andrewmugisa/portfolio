@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="143 104 558 384"
+     width="558" height="384"
+     role="img" aria-label="WIGO — click, connect, wigo">
+
+  <title>WIGO</title>
+
+  <defs>
+    <linearGradient id="wigo-bg" x1="0.9" y1="0" x2="0.15" y2="1">
+      <stop offset="0"    stop-color="#3a3a3d"/>
+      <stop offset="0.35" stop-color="#242427"/>
+      <stop offset="0.7"  stop-color="#111113"/>
+      <stop offset="1"    stop-color="#050506"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="143" y="104" width="558" height="384" rx="18" fill="url(#wigo-bg)"/>
+
+  <style>
+    @keyframes wigo-draw    { to { stroke-dashoffset: 0; } }
+    @keyframes wigo-pulse   { 0%,100% { opacity: 1; } 50% { opacity: .45; } }
+    @keyframes wigo-ringpop { 0%   { transform: scale(.4); opacity: 0; }
+                              60%  { opacity: 1; }
+                              100% { transform: scale(1); opacity: 1; } }
+    @keyframes wigo-fadein  { to { opacity: 1; } }
+
+    .wigo-letter {
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+      animation: wigo-draw 1.4s ease forwards;
+    }
+
+    #wigo-w  { animation-delay: .10s; }
+    #wigo-i  { animation-delay: .50s; }
+    #wigo-g  { animation-delay: .70s; }
+    #wigo-o  { animation-delay: 1.00s; }
+    #wigo-o2 { animation-delay: 1.10s; }
+
+    .wigo-mast {
+      stroke-dasharray: 160;
+      stroke-dashoffset: 160;
+      animation: wigo-draw .7s ease .3s forwards;
+    }
+
+    .wigo-ring {
+      transform-box: fill-box;
+      transform-origin: center;
+      opacity: 0;
+      animation: wigo-ringpop .5s ease 1s forwards;
+    }
+
+    .wigo-wave { opacity: 0; }
+
+    #wigo-wi1, #wigo-wi2 {
+      animation: wigo-fadein .6s ease .9s forwards,
+                 wigo-pulse 2.6s ease-in-out 1.6s infinite;
+    }
+
+    #wigo-wo1, #wigo-wo2 {
+      animation: wigo-fadein .6s ease 1.05s forwards,
+                 wigo-pulse 2.6s ease-in-out 1.8s infinite;
+    }
+
+    .wigo-tag { opacity: 0; animation: wigo-fadein .8s ease 1.5s forwards; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .wigo-letter, .wigo-mast { stroke-dashoffset: 0; animation: none; }
+      .wigo-ring, .wigo-tag, .wigo-wave,
+      #wigo-wi1, #wigo-wi2, #wigo-wo1, #wigo-wo2 { opacity: 1; animation: none; }
+    }
+  </style>
+
+  <!-- WIGO lettering -->
+  <g fill="none" stroke="#FFFFFF" stroke-width="6"
+     stroke-linejoin="round" stroke-linecap="butt">
+
+    <path id="wigo-w" class="wigo-letter" pathLength="1000"
+          d="M 183 248 L 183 346
+             A 50 50 0 0 0 268 381.7
+             A 50 50 0 0 0 353 346
+             L 353 248 L 323 248 L 323 346
+             A 20 20 0 0 0 283 346
+             L 283 248 L 253 248 L 253 346
+             A 20 20 0 0 0 213 346
+             L 213 248 Z"/>
+
+    <rect id="wigo-i" class="wigo-letter" pathLength="1000"
+          x="367" y="248" width="30" height="148" rx="5"/>
+
+    <path id="wigo-g" class="wigo-letter" pathLength="1000"
+          d="M 525 298 L 495 298
+             A 20 20 0 0 0 475 278
+             L 463 278
+             A 20 20 0 0 0 443 298
+             L 443 346
+             A 20 20 0 0 0 463 366
+             L 475 366
+             A 20 20 0 0 0 495 346
+             L 461 346 L 461 316 L 525 316 L 525 346
+             A 50 50 0 0 1 475 396
+             L 463 396
+             A 50 50 0 0 1 413 346
+             L 413 298
+             A 50 50 0 0 1 463 248
+             L 475 248
+             A 50 50 0 0 1 525 298 Z"/>
+
+    <rect id="wigo-o" class="wigo-letter" pathLength="1000"
+          x="549" y="248" width="112" height="148" rx="50"/>
+
+    <rect id="wigo-o2" class="wigo-letter" pathLength="1000"
+          x="579" y="278" width="52" height="88" rx="20"/>
+  </g>
+
+  <!-- Antenna -->
+  <g fill="none" stroke="#E8791E" stroke-linecap="round">
+
+    <line class="wigo-mast" x1="382" y1="188" x2="382" y2="336" stroke-width="9"/>
+
+    <g stroke-width="8">
+      <path id="wigo-wi1" class="wigo-wave" d="M 355 161 A 38 38 0 0 0 355 215"/>
+      <path id="wigo-wi2" class="wigo-wave" d="M 409 161 A 38 38 0 0 1 409 215"/>
+      <path id="wigo-wo1" class="wigo-wave" d="M 338 144 A 62 62 0 0 0 338 232"/>
+      <path id="wigo-wo2" class="wigo-wave" d="M 426 144 A 62 62 0 0 1 426 232"/>
+    </g>
+
+    <circle class="wigo-ring" cx="382" cy="186" r="10" stroke-width="8"/>
+  </g>
+
+  <!-- Tagline: textLength pins the width so it looks identical on any machine -->
+  <text class="wigo-tag"
+        x="422" y="444"
+        text-anchor="middle"
+        textLength="356" lengthAdjust="spacing"
+        font-family="Arial, Helvetica, sans-serif"
+        font-weight="700" font-size="20"
+        fill="#FFFFFF">CLICK I CONNECT I WIGO</text>
+
+</svg>
