@@ -4,57 +4,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Andrew Mugisa Portfolio</title>
-    <link rel="stylesheet" href="css/index.css ">
-    <link rel="stylesheet" href="css/nav&footer.css">
-    <link rel="stylesheet" href="css/global.css">
+    <title>Home | Andrew Mugisa</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <nav class="navbar">
-        <div class="navbar-container">
-            <a class="navbar-brand" href="index.html">
-                <img src="assets/logo.jpeg" alt="Logo" class="navbar-logo">
-            </a>
+    <a class="skip-link" href="#main">Skip to content</a>
 
-            <ul class="navbar-menu">
-                <li><a href="resume.html">Resume</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
+    <!-- ===== Header and navigation (identical on every page) ===== -->
+    <header>
+        <nav class="navbar">
+            <div class="navbar-container">
+                <a class="navbar-brand" href="index.html">
+                    <img src="images/logo.jpeg" alt="Andrew Mugisa logo" class="navbar-logo">
+                </a>
 
-    <section class="hero">
-        <div>
-            h
-            e
-            m
-        </div>
-        <div>
+                <ul class="navbar-menu">
+                    <li><a href="index.html" aria-current="page">Home</a></li>
+                    <li><a href="resume.html">Resume</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main">
+        <!-- ===== Hero: tech rail | introduction | photo ===== -->
+        <section class="hero">
+            <div class="tech-rail" aria-label="Technologies I use">
+                <ul class="tech-track" id="tech-track"></ul>
+            </div>
+
             <div class="hero-content">
-                <h1>Andrew</h1>
-                <p>Welcome to my portfolio website!</p>
+                <h1>Andrew Mugisa</h1>
+                <p class="hero-role">Software developer</p>
+                <p class="hero-intro">I am a <strong>college student</strong> who builds <strong>backend
+                        systems</strong> and full-stack web apps with <strong>Java</strong> and
+                    <strong>Spring Boot</strong>. I like turning real problems, such as router setup and ticket
+                    sales, into simple tools that people can use.
+                </p>
+
+                <!-- Quick Links row -->
+                <ul class="quick-links" aria-label="Quick links">
+                    <li><a class="btn btn-primary" href="https://www.algonquincollege.com" target="_blank"
+                            rel="noopener">College website</a></li>
+                    <li><a class="btn" href="https://github.com/andrewmugisa" target="_blank" rel="noopener">GitHub</a>
+                    </li>
+                    <li><a class="btn" href="https://www.linkedin.com/in/mugisaandrew/" target="_blank"
+                            rel="noopener">LinkedIn</a></li>
+                </ul>
             </div>
-            <div>
-                <p>Welcome to my portfolio website!</p>
-                <p>Welcome to my portfolio website!</p>
-            </div>
 
-            <div>
-                <button>Github</button>
-                <button>Contact</button>
-            </div>
-        </div>
+            <img class="hero-photo" src="images/profile.jpeg" alt="Portrait of Andrew Mugisa">
+        </section>
 
-    </section>
+        <!-- ===== Motto ===== -->
+        <blockquote class="motto">
+            <p>Make it work, then make it clear.</p>
+        </blockquote>
 
+        <!-- ===== About, hobbies and activities ===== -->
+        <section class="about">
+            <article class="panel">
+                <h2>About me</h2>
+                <p>[Write two or three sentences about your studies and what you want to do after graduating.]</p>
+            </article>
+            <article class="panel">
+                <h2>Hobbies and activities</h2>
+                <ul>
+                    <li>[Hobby one]</li>
+                    <li>[Hobby two]</li>
+                    <li>[Club, team or volunteering]</li>
+                </ul>
+            </article>
+        </section>
+    </main>
 
+    <!-- ===== Footer (identical on every page) ===== -->
     <footer>
         <p>&copy; 2026 Andrew Mugisa. All rights reserved.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="scripts/index.js"></script>
 </body>
 
 </html>
