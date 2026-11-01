@@ -4,127 +4,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Projects</title>
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/nav-footer.css">
-    <link rel="stylesheet" href="css/projects.css">
-    <link rel="stylesheet" href="css/nav&footer.css">
+    <title>Projects | Andrew Mugisa</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
+    <!-- ===== Header and navigation (identical on every page) ===== -->
+    <header>
+        <nav class="navbar">
+            <div class="navbar-container">
+                <a class="navbar-brand" href="index.html">
+                    <img src="images/logo.jpeg" alt="Andrew Mugisa logo" class="navbar-logo">
+                </a>
 
-    <nav class="navbar">
-        <div class="navbar-container">
-            <a class="navbar-brand" href="index.html">
-                <img src="assets/logo.jpeg" alt="Logo" class="navbar-logo">
-            </a>
-
-
-            <ul class="navbar-menu">
-                <li><a href="resume.html">Resume</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- <section class="current-future">
-        <div class="current-steak">
-            <button>prev</button>
-            <div class="current-image">
-                <!-- image here. cover 80% --
-
-
+                <ul class="navbar-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="resume.html">Resume</a></li>
+                    <li><a href="projects.html" aria-current="page">Projects</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
             </div>
-            <div class="current-content">
-                <div>
-                    <p class="title">Current</p>
-                    <p class="sub">JavaScript</p>
-                </div>
+        </nav>
+    </header>
 
-                <button>click me</button>
-            </div>
-
-            <button>next</button>
-
-        </div>
-
-        <!-- Right Column --
-        <div class="future">
-            <div class="future-image">
-                <!-- image here. cover 80% --
-                <img src="assets/logo.jpeg" alt="Future Image">
-
-            </div>
-            <div class="future-content">
-                <div>
-                    <p class="title">Future</p>
-                    <p class="sub">C++</p>
-                </div>
-
-                <button>click me</button>
-            </div>
-
-        </div>
-    </section> -->
     <main>
+        <section class="projects-page">
+            <h1>Projects</h1>
+            <p class="projects-intro">A selection of things I have built. Use the filters to narrow them down by
+                technology.</p>
 
-        <section class="projects" id="projects"></section>
-
-        <!-- <section class="">
-            <article class="project-card">
-            <div class="project-image-container">
-                <img class="project-image" src="assets/logo.jpeg" alt="Spring_auth logo">
+            <!-- ===== Filter buttons: JS reads data-filter and compares it to each card's data-category ===== -->
+            <div class="filter-bar" role="group" aria-label="Filter projects by technology">
+                <button class="filter-btn active" type="button" data-filter="all" aria-pressed="true">All</button>
+                <button class="filter-btn" type="button" data-filter="java" aria-pressed="false">Java</button>
+                <button class="filter-btn" type="button" data-filter="javascript"
+                    aria-pressed="false">JavaScript</button>
+                <button class="filter-btn" type="button" data-filter="html-css" aria-pressed="false">HTML/CSS</button>
             </div>
 
-            <div class="project-content">
-                <h3 class="project-title">Spring_auth</h3>
-                <p class="project-brief">A Spring Boot authentication library you can plug into any project.</p>
+            <!-- Announces the result of a filter to screen readers -->
+            <p class="filter-status" id="filter-status" aria-live="polite"></p>
 
-                <div class="project-tabs" role="tablist">
-                    <button role="tab" id="tab-scope" aria-selected="true" aria-controls="panel-scope">Scope</button>
-                    <button role="tab" id="tab-tech" aria-selected="false" aria-controls="panel-tech"
-                        tabindex="-1">Tech</button>
-                </div>
-
-                <div class="project-panel project-scope" role="tabpanel" id="panel-scope" aria-labelledby="tab-scope">
-                    <p>JWT authentication, token blacklisting, expiring email verification codes, stateless security and
-                        a
-                        clean layered architecture.</p>
-                </div>
-
-                <div class="project-panel project-tech" role="tabpanel" id="panel-tech" aria-labelledby="tab-tech"
-                    hidden>
-                    <ul>
-                        <li>Java</li>
-                        <li>Spring Boot</li>
-                        <li>Spring Security</li>
-                        <li>JWT</li>
-                    </ul>
-                </div>
-
-                <div class="project-links">
-                    <a href="#" target="_blank" rel="noopener">GitHub</a>
-                    <a href="#" target="_blank" rel="noopener">Live</a>
-                </div>
-
-                <div class="project-progress" role="progressbar" aria-label="Project progress" aria-valuemin="0"
-                    aria-valuemax="100" aria-valuenow="80">
-                    <div class="progress-bar" style="--progress: 80%"></div>
-                </div>
-            </div>
-        </article> 
-        </section> -->
-
-
+            <!-- ===== Cards are inserted here by scripts/projects.js (CSS Grid container) ===== -->
+            <div id="project-container"></div>
+        </section>
     </main>
 
+    <!-- <section class="current-future">
+            <div class="current-steak">
+                <button>prev</button>
+                <div class="current-image">
+                    <!-- image here. cover 80% --
+    
+    
+                </div>
+                <div class="current-content">
+                    <div>
+                        <p class="title">Current</p>
+                        <p class="sub">JavaScript</p>
+                    </div>
+    
+                    <button>click me</button>
+                </div>
+    
+                <button>next</button>
+    
+            </div>
+    
+            <!-- Right Column --
+            <div class="future">
+                <div class="future-image">
+                    <!-- image here. cover 80% --
+                    <img src="assets/logo.jpeg" alt="Future Image">
+    
+                </div>
+                <div class="future-content">
+                    <div>
+                        <p class="title">Future</p>
+                        <p class="sub">C++</p>
+                    </div>
+    
+                    <button>click me</button>
+                </div>
+    
+            </div>
+        </section> -->
 
+    <!-- ===== Card template: one copy of this structure is cloned for every project ===== -->
+    <template id="project-template">
+        <div class="project-card" data-category="">
+            <img class="project-image" data-field="image" src="" alt="">
+
+            <div class="project-body">
+                <h2 class="project-title" data-field="title">Project title</h2>
+
+                <p class="project-date">Completed: <time data-field="date">Month Year</time></p>
+
+                <p class="project-description" data-field="description">Short description of the project.</p>
+
+                <ul class="project-tech" data-field="tech" aria-label="Technologies used">
+                    <li class="tech-chip">Technology</li>
+                </ul>
+
+                <a class="project-link" data-field="link" href="#" target="_blank" rel="noopener">View on GitHub</a>
+            </div>
+        </div>
+    </template>
+
+    <!-- ===== Footer (identical on every page) ===== -->
+    <footer>
+        <p>&copy; 2026 Andrew Mugisa. All rights reserved.</p>
+    </footer>
+
+    <script src="scripts/projects.js"></script>
 </body>
-<footer>
-    <p>&copy; 2026 Andrew Mugisa. All rights reserved.</p>
-</footer>
-
-<script src="scripts/projects.js"></script>
 
 </html>

@@ -1,172 +1,150 @@
-// ===== Project data: add new projects here =====
+// ===== Project data: add or edit projects here =====
+// category must match a filter button's data-filter value in projects.html
+// completed uses the format "YYYY-MM"
 const projects = [
   {
     title: "Spring Authentication Library",
-    brief:
-      "A Spring Boot authentication library you can plug into any project.",
-    scope:
-      "A production-ready library with JWT authentication, token blacklisting, expiring email verification codes, stateless security and a clean layered architecture.",
+    category: "java",
+    completed: "2026-06",
+    description:
+      "A production-ready Spring Boot authentication library with JWT, token blacklisting and expiring email verification codes. Built to be plugged into any Spring project.",
     tech: ["Java", "Spring Boot", "Spring Security", "JWT"],
-    image: "assets/logo.jpeg",
-    alt: "Spring_auth preview",
-    github: "https://github.com/andrewmugisa/Spring_auth",
-    live: "",
-    progress: 90,
+    image: "images/authentication.jpg",
+    alt: "Spring_auth project preview",
+    link: "https://github.com/andrewmugisa/Spring_auth",
   },
   {
     title: "WigoEvents",
-    brief: "A concerts platform where people buy and sell tickets.",
-    scope:
-      "Full-stack platform with a Spring Boot REST API backed by PostgreSQL and a React frontend. Includes API documentation and a contribution guide. The repository is currently private (contribution by invite only), and a public repository and live site are coming soon.",
-    tech: ["Java", "Spring Boot", "PostgreSQL", "React", "REST API"],
-    image: "assets/wigo-logo.svg",
-    alt: "WigoEvents preview",
-    github: "", // private for now; add the link when it goes public
-    live: "",
-    progress: 50,
+    category: "java",
+    completed: "2026-05",
+    description:
+      "A full-stack concerts platform where people buy and sell tickets, with a Spring Boot REST API, PostgreSQL and a React frontend. The repository is currently private.",
+    tech: ["Java", "Spring Boot", "PostgreSQL", "React", "Supabase"],
+    image: "images/wigo-logo.svg",
+    alt: "WigoEvents project preview",
+    link: "https://github.com/andrewmugisa/WiGO-EVENTS",
   },
   {
-    title: "password Generator Chrome Extension",
-    brief: "A Chrome extension that generates strong passwords on demand.",
-    scope:
-      "Detects password fields on web pages and generates strong, random passwords with clipboard copy support. Nothing is stored, for privacy and security.",
-    tech: ["JavaScript", "HTML", "CSS", "Chrome Extension"],
-    image: "assets/password-Generator.png",
-    alt: "password-generator preview",
-    github: "https://github.com/andrewmugisa/password-generator",
-    live: "https://andrewmugisa.github.io/password-generator/",
-    progress: 90,
+    title: "Google Chrome password generator",
+    category: "javascript",
+    completed: "2026-03",
+    description:
+      "A Chrome extension that detects password fields and generates strong random passwords with clipboard copy. Nothing is stored, for privacy and security.",
+    tech: ["JavaScript", "Chrome Extensions API"],
+    image: "images/password-generator.png",
+    alt: "password-generator project preview",
+    link: "https://github.com/andrewmugisa/password-generator",
   },
   {
-    title: "mikrotik setup Automation",
-    brief: "A Java tool that makes MikroTik router setup easier.",
-    scope:
-      "Creates users and fetches live router data through the RouterOS API. The roadmap is router configuration automation, so beginners can set up a router with a few clicks. Contributors are welcome, so take a look at the roadmap.",
-    tech: ["Java", "RouterOS API", "MikroTik"],
-    image: "assets/logo.jpeg",
-    alt: "mikrotik-automation01 preview",
-    github: "https://github.com/andrewmugisa/mikrotik-automation01",
-    live: "",
-    progress: 35,
+    title: "mikrotik setup automation",
+    category: "java",
+    completed: "2026-04",
+    description:
+      "A Java tool that creates users and fetches live data from MikroTik routers through the RouterOS API. The roadmap is one-click router configuration for beginners.",
+    tech: ["Java", "React", "tik4j API"],
+    image: "images/mikrotik-logo.jpg",
+    alt: "mikrotik-automation01 project preview",
+    link: "https://github.com/andrewmugisa/mikrotik-automation01",
+  },
+  {
+    title: "Personal portfolio",
+    category: "html-css",
+    completed: "2026-10",
+    description:
+      "This responsive four-page portfolio, built from scratch with semantic HTML, CSS Grid and Flexbox, and JavaScript for the project filter.",
+    tech: ["HTML", "CSS", "JavaScript"],
+    image: "images/profile.jpeg",
+    alt: "Personal portfolio website preview",
+    link: "",
   },
 ];
-// ===== Helpers =====
-function el(tag, className, text) {
-  const node = document.createElement(tag);
-  if (className) node.className = className;
-  if (text !== undefined) node.textContent = text;
-  return node;
+
+// ===== Grab the elements we need =====
+const container = document.getElementById("project-container");
+const template = document.getElementById("project-template");
+const status = document.getElementById("filter-status");
+
+// "2026-02" -> "February 2026"
+function formatDate(yearMonth) {
+  const [year, month] = yearMonth.split("-").map(Number);
+  return new Date(year, month - 1).toLocaleDateString("en-CA", {
+    month: "long",
+    year: "numeric",
+  });
 }
 
-function makeLink(label, href) {
-  const a = el("a", "", label);
-  a.href = href;
-  a.target = "_blank";
-  a.rel = "noopener";
-  return a;
+// Find a placeholder inside a cloned card, e.g. field(card, "title")
+function field(card, name) {
+  return card.querySelector(`[data-field="${name}"]`);
 }
 
-// ===== Build one card =====
-function createProjectCard(project, index) {
-  const scopeId = `panel-scope-${index}`;
-  const techId = `panel-tech-${index}`;
+// ===== Build the cards: clone the HTML template once per project and fill it in =====
+projects.forEach((project) => {
+  const clone = template.content.cloneNode(true);
+  const card = clone.querySelector(".project-card");
 
-  const card = el("article", "project-card");
+  card.dataset.category = project.category;
 
-  // Image
-  const imageBox = el("div", "project-image-container");
-  const img = el("img", "project-image");
-  img.src = project.image;
-  img.alt = project.alt || `${project.title} preview`;
-  imageBox.appendChild(img);
+  const image = field(clone, "image");
+  image.src = project.image;
+  image.alt = project.alt;
 
-  // Content wrapper
-  const content = el("div", "project-content");
-  content.appendChild(el("h3", "project-title", project.title));
-  content.appendChild(el("p", "project-brief", project.brief));
+  field(clone, "title").textContent = project.title;
+  field(clone, "description").textContent = project.description;
 
-  // Tabs
-  const tabs = el("div", "project-tabs");
-  tabs.setAttribute("role", "tablist");
+  const date = field(clone, "date");
+  date.textContent = formatDate(project.completed);
+  date.dateTime = project.completed;
 
-  const scopeTab = el("button", "", "Scope");
-  scopeTab.setAttribute("role", "tab");
-  scopeTab.id = `tab-scope-${index}`;
-  scopeTab.setAttribute("aria-controls", scopeId);
-  scopeTab.setAttribute("aria-selected", "true");
-
-  const techTab = el("button", "", "Tech");
-  techTab.setAttribute("role", "tab");
-  techTab.id = `tab-tech-${index}`;
-  techTab.setAttribute("aria-controls", techId);
-  techTab.setAttribute("aria-selected", "false");
-  techTab.tabIndex = -1;
-
-  tabs.append(scopeTab, techTab);
-  content.appendChild(tabs);
-
-  // Scope panel
-  const scopePanel = el("div", "project-panel project-scope");
-  scopePanel.id = scopeId;
-  scopePanel.setAttribute("role", "tabpanel");
-  scopePanel.setAttribute("aria-labelledby", scopeTab.id);
-  scopePanel.appendChild(el("p", "", project.scope));
-
-  // Tech panel
-  const techPanel = el("div", "project-panel project-tech");
-  techPanel.id = techId;
-  techPanel.setAttribute("role", "tabpanel");
-  techPanel.setAttribute("aria-labelledby", techTab.id);
-  techPanel.hidden = true;
-  const list = el("ul");
-  project.tech.forEach((item) => list.appendChild(el("li", "", item)));
-  techPanel.appendChild(list);
-
-  content.append(scopePanel, techPanel);
-
-  // Tab switching (scoped to this card)
-  [scopeTab, techTab].forEach((tab) => {
-    tab.addEventListener("click", () => {
-      [scopeTab, techTab].forEach((t) => {
-        const on = t === tab;
-        t.setAttribute("aria-selected", on);
-        t.tabIndex = on ? 0 : -1;
-      });
-      scopePanel.hidden = tab !== scopeTab;
-      techPanel.hidden = tab !== techTab;
-    });
+  // Technologies: reuse the <li> from the template as the pattern for each chip
+  const techList = field(clone, "tech");
+  const chipPattern = techList.querySelector("li");
+  techList.replaceChildren();
+  project.tech.forEach((name) => {
+    const chip = chipPattern.cloneNode(true);
+    chip.textContent = name;
+    techList.appendChild(chip);
   });
 
-  // Links (only render the ones that have a URL)
-  const links = el("div", "project-links");
-  if (project.github) links.appendChild(makeLink("GitHub", project.github));
-  if (project.live) links.appendChild(makeLink("Live", project.live));
-  if (links.children.length) content.appendChild(links);
+  // Link: hide it when the project has no public URL
+  const link = field(clone, "link");
+  if (project.link) {
+    link.href = project.link;
+    link.setAttribute("aria-label", `View ${project.title} on GitHub`);
+  } else {
+    link.remove();
+  }
 
-  // Progress
-  // Progress
-  const progress = el("div", "project-progress");
-  progress.setAttribute("role", "progressbar");
-  progress.setAttribute("aria-label", `${project.title} progress`);
-  progress.setAttribute("aria-valuemin", "0");
-  progress.setAttribute("aria-valuemax", "100");
-  const percent = project.progress ?? 0;
-  progress.setAttribute("aria-valuenow", percent);
-  progress.dataset.label = `Progress: ${percent}%`;
-  progress.tabIndex = 0; // lets keyboard and touch users see the tooltip
-  const track = el("div", "progress-track");
-  const bar = el("div", "progress-bar");
-  bar.style.setProperty("--progress", `${percent}%`);
-  track.appendChild(bar);
-  progress.appendChild(track);
-  content.appendChild(progress);
+  container.appendChild(clone);
+});
 
-  card.append(imageBox, content);
-  return card;
+// ===== Filtering =====
+const buttons = document.querySelectorAll(".filter-btn");
+const cards = container.querySelectorAll(".project-card");
+
+function applyFilter(filter) {
+  let shown = 0;
+
+  cards.forEach((card) => {
+    const match = filter === "all" || card.dataset.category === filter;
+    card.classList.toggle("is-hidden", !match);
+    if (match) shown++;
+  });
+
+  status.textContent = `Showing ${shown} of ${cards.length} projects`;
 }
 
-// ===== Render all =====
-const container = document.getElementById("projects");
-projects.forEach((project, index) => {
-  container.appendChild(createProjectCard(project, index));
+buttons.forEach((button) => {
+  button.addEventListener("click", () => {
+    // Highlight only the clicked button
+    buttons.forEach((b) => {
+      const active = b === button;
+      b.classList.toggle("active", active);
+      b.setAttribute("aria-pressed", active);
+    });
+
+    applyFilter(button.dataset.filter);
+  });
 });
+
+applyFilter("all");

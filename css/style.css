@@ -1,0 +1,690 @@
+/* ==========================================================
+   style.css: single stylesheet for every page
+   Sections: 1 Variables and base | 2 Header and footer | 3 Buttons
+             4 Home | 5 Projects | 6 Resume | 7 Contact
+   ========================================================== */
+
+/* ---------- 1. Variables and base ---------- */
+:root {
+  --bg: #121212;
+  --surface: #1c1f27;
+  --surface-2: #252a35;
+  --border: rgba(255, 255, 255, 0.14);
+  --text: #e9ebf0;
+  --muted: #b3b9c6;
+  --accent: #7cc4a4;
+  --accent-ink: #0f1a15;
+  --error: #ff9a9a;
+  --radius: 14px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  color: var(--text);
+  font-family:
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Arial,
+    sans-serif;
+  line-height: 1.6;
+  background-color: var(--bg);
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.1) 1px,
+    transparent 0
+  );
+  background-size: 24px 24px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+main {
+  flex: 1;
+  width: min(1100px, calc(100% - 40px));
+  margin-inline: auto;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Skip link for keyboard users (WCAG) */
+.skip-link {
+  position: absolute;
+  left: 12px;
+  top: -60px;
+  padding: 8px 14px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-radius: 8px;
+  z-index: 20;
+}
+
+.skip-link:focus {
+  top: 12px;
+}
+
+/* ---------- 2. Header and footer ---------- */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(18, 18, 18, 0.94);
+  border-bottom: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  width: min(1100px, calc(100% - 40px));
+  margin-inline: auto;
+  padding: 10px 0;
+}
+
+.navbar-logo {
+  display: block;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.navbar-menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navbar-menu a {
+  display: block;
+  padding: 8px 14px;
+  border-radius: 8px;
+  color: var(--muted);
+}
+
+.navbar-menu a:hover,
+.navbar-menu a[aria-current="page"] {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+footer {
+  margin-top: 40px;
+  padding: 20px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+footer p {
+  margin: 0;
+}
+
+/* ---------- 3. Buttons and shared blocks ---------- */
+.btn {
+  display: inline-block;
+  min-width: 8rem;
+  padding: 10px 18px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: 0.95rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: var(--surface-2);
+}
+
+.btn-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  background: var(--accent);
+  filter: brightness(1.1);
+}
+
+.page-title {
+  margin: 40px 0 8px;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+}
+
+.page-intro {
+  margin: 0 0 24px;
+  color: var(--muted);
+}
+
+.panel {
+  margin-bottom: 20px;
+  padding: 22px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  text-align: left;
+}
+
+.panel h2 {
+  margin: 0 0 12px;
+  font-size: 1.25rem;
+}
+
+.panel p {
+  margin: 0;
+}
+
+.panel ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+/* ---------- 4. Home ---------- */
+/* =============== HERO =============== */
+.hero {
+  display: grid;
+  grid-template-columns: 88px 1fr minmax(220px, 30%);
+  grid-template-areas: "rail content photo";
+  align-items: center;
+  gap: 42px;
+  padding: 48px 0;
+  min-height: 420px;
+  background-color: #000;
+  padding: 0 20px;
+  border-radius: var(--radius);
+}
+
+/* ---- Tech rail ---- */
+.tech-rail {
+  grid-area: rail;
+  align-self: center;
+  height: 340px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  -webkit-mask-image: linear-gradient(
+    transparent,
+    #000 15%,
+    #000 85%,
+    transparent
+  );
+  mask-image: linear-gradient(transparent, #000 15%, #000 85%, transparent);
+}
+
+.tech-track {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  animation: rail-up 24s linear infinite;
+}
+
+/* The list is rendered twice, so moving it by half loops without a jump */
+@keyframes rail-up {
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes rail-left {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.tech-rail:hover .tech-track {
+  animation-play-state: paused;
+}
+
+.tech-item {
+  display: grid;
+  place-items: center;
+  flex: none;
+  padding: 14px 0; /* padding, not gap, so the loop stays seamless */
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+
+.tech-item img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+/* ---- Content ---- */
+.hero-content {
+  grid-area: content;
+  text-align: left;
+}
+
+.hero-content h1 {
+  margin: 0 0 8px;
+  font-size: clamp(2rem, 5vw, 3.6rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.hero-role {
+  margin: 0 0 16px;
+  font-size: 1.15rem;
+  color: var(--accent);
+}
+
+.hero-intro {
+  margin: 0 0 28px;
+  max-width: 34rem;
+  font-size: 1.1rem;
+  color: var(--muted);
+}
+
+.quick-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* ---- Photo ---- */
+.hero-photo {
+  grid-area: photo;
+  width: 100%;
+  max-height: 380px;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  border-radius: var(--radius);
+  background: var(--surface-2);
+}
+
+.hero-photo:hover {
+  transform: scale(1.05);
+}
+
+/* =============== MOBILE =============== */
+@media (max-width: 760px) {
+  .hero {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "photo"
+      "content"
+      "rail";
+    gap: 24px;
+    padding: 32px 0;
+  }
+
+  .hero-photo {
+    max-width: 220px;
+    justify-self: center;
+  }
+
+  .hero-content {
+    text-align: center;
+  }
+
+  .hero-intro {
+    margin-inline: auto;
+  }
+
+  .quick-links {
+    justify-content: center;
+  }
+
+  /* Rail becomes a horizontal strip */
+  .tech-rail {
+    height: 72px;
+    width: 100%;
+    -webkit-mask-image: linear-gradient(
+      90deg,
+      transparent,
+      #000 15%,
+      #000 85%,
+      transparent
+    );
+    mask-image: linear-gradient(
+      90deg,
+      transparent,
+      #000 15%,
+      #000 85%,
+      transparent
+    );
+  }
+
+  .tech-track {
+    flex-direction: row;
+    width: max-content;
+    height: 100%;
+    align-items: center;
+    animation-name: rail-left;
+  }
+
+  .tech-item {
+    padding: 0 18px;
+  }
+}
+
+/* People who prefer less motion get a static rail they can scroll */
+@media (prefers-reduced-motion: reduce) {
+  .tech-track {
+    animation: none;
+  }
+
+  .tech-rail {
+    overflow: auto;
+  }
+}
+
+/* Motto and about section */
+.motto {
+  margin: 8px 0 28px;
+  padding: 18px 24px;
+  background: var(--surface);
+
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-size: 1.3rem;
+  font-style: italic;
+  text-align: left;
+}
+
+.motto p {
+  margin: 0;
+}
+
+.about {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.about .panel {
+  margin-bottom: 0;
+}
+
+/* ---------- 5. Projects ---------- */
+/* =============== PROJECTS PAGE =============== */
+.projects-page {
+  padding: 32px 0 48px;
+  text-align: center;
+}
+
+.projects-page h1 {
+  margin: 0 0 8px;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+}
+
+.projects-intro {
+  margin: 0 auto 24px;
+  max-width: 36rem;
+  color: var(--muted);
+}
+
+/* ---- Filter buttons ---- */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+/* Overrides the global button rule (fixed width, black background) */
+.filter-btn {
+  width: auto;
+  min-width: 6rem;
+  padding: 8px 16px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.92rem;
+  cursor: pointer;
+}
+
+.filter-btn:hover {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+/* Highlight for the selected filter; must come after the hover rule */
+.filter-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 600;
+}
+
+.filter-status {
+  margin: 0 0 20px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* ---- Project grid (CSS Grid) ---- */
+#project-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+  gap: 24px;
+}
+
+/* ---- Card ---- */
+.project-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  text-align: left;
+}
+
+/* Added by JS when a card doesn't match the active filter */
+.project-card.is-hidden {
+  display: none;
+}
+
+.project-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  background: var(--surface-2);
+  transition: transform 0.3s ease;
+}
+
+.project-image:hover {
+  transform: scale(1.05);
+}
+
+.project-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+  padding: 18px;
+}
+
+.project-title {
+  margin: 0;
+  font-size: 1.2rem;
+  letter-spacing: -0.01em;
+}
+
+.project-date {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.project-description {
+  margin: 0;
+  flex: 1; /* pushes chips and link to the bottom so cards line up */
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+/* ---- Technology chips ---- */
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tech-chip {
+  padding: 3px 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.8rem;
+}
+
+/* ---- Link ---- */
+.project-link {
+  align-self: flex-start;
+  color: var(--accent);
+  font-size: 0.9rem;
+  text-decoration: underline;
+}
+
+.project-link:hover {
+  filter: brightness(1.15);
+}
+
+/* ---------- 6. Resume ---------- */
+.text-link {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.plain-list {
+  padding-left: 0 !important;
+  list-style: none;
+}
+
+.resume-item h3,
+.skills-grid h3 {
+  margin: 0 0 4px;
+  font-size: 1.05rem;
+}
+
+.resume-meta {
+  margin-bottom: 8px !important;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding-left: 0 !important;
+  list-style: none;
+}
+
+.chips li {
+  padding: 3px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.85rem;
+}
+
+/* ---------- 7. Contact ---------- */
+.contact-form {
+  max-width: 36rem;
+  padding: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  text-align: left;
+}
+
+.form-field {
+  margin-bottom: 18px;
+}
+
+.form-field label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.form-field input,
+.form-field textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+}
+
+.form-field textarea {
+  resize: vertical;
+}
+
+.form-field input.invalid,
+.form-field textarea.invalid {
+  border-color: var(--error);
+}
+
+.hint,
+.error {
+  margin: 4px 0 0;
+  font-size: 0.82rem;
+}
+
+.hint {
+  color: var(--muted);
+}
+
+.error {
+  color: var(--error);
+}
+
+.form-success {
+  margin: 14px 0 0;
+  color: var(--accent);
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+  }
+}
